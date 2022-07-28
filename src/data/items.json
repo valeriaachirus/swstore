@@ -1,0 +1,61 @@
+[{
+        "id": 1,
+        "name": "Cake",
+        "price": 10.99,
+        "imgUrl": "/imgs/1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "CupCake",
+        "price": 10.86,
+        "imgUrl": "/imgs/2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Chocolate Cake",
+        "price": 9.05,
+        "imgUrl": "/imgs/3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/6.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/7.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/8.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/9.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Pops",
+        "price": 6.00,
+        "imgUrl": "/imgs/10.jpg"
+    }
+]
