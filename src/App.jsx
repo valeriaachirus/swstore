@@ -5,6 +5,7 @@ import { Store } from "./pages/Store"
 import   Slider  from "./pages/Slider"
 import { Navbar } from "./components/Navbar"
 import { ShoppingCartProvider } from "./context/ShoppingCartContext"
+import  Contact  from "./pages/Contact"
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/about" element={<Slider />} />
+          <Route path="/ourteam" element={<Slider />} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
       </Container>
     </ShoppingCartProvider>

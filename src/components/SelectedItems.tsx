@@ -3,12 +3,12 @@ import { useShoppingCart } from "../context/ShoppingCartContext"
 import storeItems from "../data/items.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 
-type CartItemProps = {
+type SelectedItemsProps = {
   id: number
   quantity: number
 }
 
-export function CartItem({ id, quantity }: CartItemProps) {
+export function SelectedItems({ id, quantity }: SelectedItemsProps) {
   const { removeFromCart } = useShoppingCart()
 
   const item = storeItems.find(i => i.id === id)
@@ -23,12 +23,14 @@ export function CartItem({ id, quantity }: CartItemProps) {
       />
       <div className="me-auto">
         <div>
-          {item.name}{" "}
-          {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: ".65rem" }}>
-              x{quantity}
-            </span>
-          )}
+          <select>
+            {item.name}{" "}
+            {quantity > 1 && (
+              <span className="text-muted" style={{ fontSize: ".65rem" }}>
+                x{quantity}
+              </span>
+            )}
+          </select>
         </div>
         <div className="text-muted" style={{ fontSize: ".75rem" }}>
           {formatCurrency(item.price)}

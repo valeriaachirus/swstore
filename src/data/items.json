@@ -18,7 +18,7 @@
     },
     {
         "id": 4,
-        "name": "Pops",
+        "name": "Pink Cake",
         "price": 6.00,
         "imgUrl": "/imgs/4.jpg"
     },
@@ -30,7 +30,7 @@
     },
     {
         "id": 6,
-        "name": "Pops",
+        "name": "Vanilla Cupcake",
         "price": 6.00,
         "imgUrl": "/imgs/6.jpg"
     },
@@ -54,8 +54,20 @@
     },
     {
         "id": 10,
-        "name": "Pops",
+        "name": "Vanilla Cake",
         "price": 6.00,
         "imgUrl": "/imgs/10.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Chocolate Cake",
+        "price": 6.00,
+        "imgUrl": "/imgs/11.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Strawberry cake",
+        "price": 6.00,
+        "imgUrl": "/imgs/12.jpg"
     }
 ]

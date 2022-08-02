@@ -24,30 +24,7 @@ const useStyles = makeStyles({
     width: '127px',
     backgroundColor: '#fee6e3',
     touchAction: 'manipulation',
-    "&::after": {
-      backgroundColor: '#111',
-      borderRadius: '8px',
-      display: 'block',
-      height: '48px',
-      left: '0',
-      width: '100%',
-      position: 'absolute',
-      top: -'2px',
-      transform: 'translate(8px, 8px)',
-      transition: 'transform .2s ease-out',
-      zIndex: '-1',
-    },
-    "&:hover::after":{
-      transform: 'translate(0, 0)',
-    },
-    '&:active':{
-      backgroundColor: '#ffdeda',
-      outline: '0',
-    
-    },
-    '&:hover': {
-      outline: '0',
-    },
+    color: 'black',
   
   }
   

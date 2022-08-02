@@ -20,6 +20,10 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void
   cartQuantity: number
   cartItems: CartItem[]
+  removeAllFromCart: () => void
+
+
+  
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -74,9 +78,17 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }
     })
   }
+
+  
   function removeFromCart(id: number) {
     setCartItems(currItems => {
       return currItems.filter(item => item.id !== id)
+    })
+  }
+
+function removeAllFromCart() {
+    setCartItems(currItems => {
+      return []
     })
   }
 
@@ -91,6 +103,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         closeCart,
         cartItems,
         cartQuantity,
+        removeAllFromCart,
+
       }}
     >
       {children}
