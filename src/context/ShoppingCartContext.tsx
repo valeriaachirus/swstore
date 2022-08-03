@@ -11,6 +11,7 @@ type CartItem = {
   quantity: number
 }
 
+
 type ShoppingCartContext = {
   openCart: () => void
   closeCart: () => void
@@ -21,9 +22,7 @@ type ShoppingCartContext = {
   cartQuantity: number
   cartItems: CartItem[]
   removeAllFromCart: () => void
-
-
-  
+  addToSelected: (id: number) => void
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -33,6 +32,9 @@ export function useShoppingCart() {
 }
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false)
+
+  const openCart = () => setIsOpen(true)
+  const closeCart = () => setIsOpen(false)
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -43,11 +45,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     0
   )
 
-  const openCart = () => setIsOpen(true)
-  const closeCart = () => setIsOpen(false)
   function getItemQuantity(id: number) {
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
+
   function increaseCartQuantity(id: number) {
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id) == null) {
@@ -63,6 +64,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }
     })
   }
+
   function decreaseCartQuantity(id: number) {
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id)?.quantity === 1) {
@@ -86,7 +88,13 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     })
   }
 
-function removeAllFromCart() {
+  function removeAllFromCart() {
+    setCartItems(currItems => {
+      return []
+    })
+  }
+
+  function addToSelected() {
     setCartItems(currItems => {
       return []
     })
@@ -104,7 +112,7 @@ function removeAllFromCart() {
         cartItems,
         cartQuantity,
         removeAllFromCart,
-
+        addToSelected
       }}
     >
       {children}

@@ -8,8 +8,6 @@ import {SelectedItems} from './SelectedItems';
 
 type ShoppingCartProps = {
   isOpen: boolean,
-  
-
 }
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
@@ -49,14 +47,11 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           }
 
           {
-            <button onClick={() => setChoose(true)}>
-              Select
+            <button onClick={() => setChoose(!choose)}>
+              { choose ? 'Cancel' : 'Select' }
             </button>
           }
 
-          
-
-          
         </Stack>
       </Offcanvas.Body>
     </Offcanvas>

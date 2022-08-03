@@ -17,20 +17,22 @@ export function SelectedItems({ id, quantity }: SelectedItemsProps) {
   
   return (
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
+       
+        <input
+          type="checkbox"
+        />
       <img
         src={item.imgUrl}
         style={{ width: "125px", height: "75px", objectFit: "cover" }}
       />
       <div className="me-auto">
         <div>
-          <select>
-            {item.name}{" "}
-            {quantity > 1 && (
-              <span className="text-muted" style={{ fontSize: ".65rem" }}>
-                x{quantity}
-              </span>
-            )}
-          </select>
+          {item.name}{" "}
+          {quantity > 1 && (
+            <span className="text-muted" style={{ fontSize: ".65rem" }}>
+              x{quantity}
+            </span>
+          )}
         </div>
         <div className="text-muted" style={{ fontSize: ".75rem" }}>
           {formatCurrency(item.price)}
