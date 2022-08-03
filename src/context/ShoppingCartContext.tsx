@@ -9,6 +9,7 @@ type ShoppingCartProviderProps = {
 type CartItem = {
   id: number
   quantity: number
+  select: boolean
 }
 
 
@@ -23,6 +24,7 @@ type ShoppingCartContext = {
   cartItems: CartItem[]
   removeAllFromCart: () => void
   addToSelected: (id: number) => void
+  removeSelected: () => void
 }
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext)
@@ -35,6 +37,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
+
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
     "shopping-cart",
     []
@@ -52,11 +55,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function increaseCartQuantity(id: number) {
     setCartItems(currItems => {
       if (currItems.find(item => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }]
+        return [...currItems, { id, quantity: 1, select: false }]
       } else {
         return currItems.map(item => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 }
+            return { ...item, quantity: item.quantity + 1, select: false }
           } else {
             return item
           }
@@ -72,7 +75,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       } else {
         return currItems.map(item => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 }
+            return { ...item, quantity: item.quantity - 1, select: false }
           } else {
             return item
           }
@@ -94,9 +97,21 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     })
   }
 
-  function addToSelected() {
+  function addToSelected(id: number) {
     setCartItems(currItems => {
-      return []
+      return currItems.map(item => {
+        if (item.id === id) {
+          return { ...item, quantity: item.quantity, select: !item.select }
+        } else {
+          return item
+        }
+      })
+    })
+  }
+
+  function removeSelected() {
+    setCartItems(currItems => {
+      return currItems.filter(item => item.select !== true)
     })
   }
 
@@ -112,7 +127,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartItems,
         cartQuantity,
         removeAllFromCart,
-        addToSelected
+        addToSelected,
+        removeSelected
       }}
     >
       {children}

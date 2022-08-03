@@ -13,7 +13,12 @@ type ShoppingCartProps = {
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const [choose, setChoose] = useState(false)
   const { closeCart, cartItems } = useShoppingCart()
-  const {removeAllFromCart} = useShoppingCart()
+  const {removeAllFromCart, removeSelected} = useShoppingCart()
+
+  const removeSelectedButton = () => {
+    removeSelected()
+    setChoose(!choose)
+  }
   
 
   return (
@@ -49,6 +54,12 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           {
             <button onClick={() => setChoose(!choose)}>
               { choose ? 'Cancel' : 'Select' }
+            </button>
+          }
+
+          { choose && 
+            <button onClick={() => removeSelectedButton()}>
+              Remove selected
             </button>
           }
 

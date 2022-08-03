@@ -9,7 +9,7 @@ type SelectedItemsProps = {
 }
 
 export function SelectedItems({ id, quantity }: SelectedItemsProps) {
-  const { removeFromCart } = useShoppingCart()
+  const { removeFromCart, addToSelected } = useShoppingCart()
 
   const item = storeItems.find(i => i.id === id)
   if (item == null) return null
@@ -20,6 +20,7 @@ export function SelectedItems({ id, quantity }: SelectedItemsProps) {
        
         <input
           type="checkbox"
+          onClick={() => addToSelected(item.id)}
         />
       <img
         src={item.imgUrl}
